@@ -39,9 +39,7 @@ function handleSearchClick() {
 
     renderButtons();
 
-    $("#searchBtn").click(handleSearchClick);
-
-    $(".topicBtn").click([this], handleTopicClick);
+    return;
 
 }
 
@@ -64,15 +62,14 @@ function handleTopicClick(object){
         $("#memeHolder").append(output);
     });
 
-    $("#searchBtn").click(handleSearchClick);
-
-    $(".topicBtn").click([this], handleTopicClick);
-
+    return;
 }
 
 function renderButtons() {
 
     $("#btnHolder").empty();
+
+    console.log(topics);
 
     topics.forEach(element => {
 
