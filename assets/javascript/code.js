@@ -13,12 +13,16 @@ $(document).ready(function () {
 
     $(".topicBtn").click([this], handleTopicClick);
 
-});
+
 
 function handleSearchClick() {
 
     var newTopic = $("#topicName").val();
     console.log(newTopic);
+
+    topics.push(newTopic);
+
+    console.log(topics);
 
     var memes = $.get("http://api.giphy.com/v1/gifs/search?q=" + newTopic + "&api_key=yqCJ5Nq2E9NOTJwaFPPYcP0VsYxqE25p&limit=10");
     memes.done(function (result) { 
@@ -33,22 +37,19 @@ function handleSearchClick() {
         $("#memeHolder").append(output);
     });
 
-    var newBtn = $('<button/>',
-        {
-            style: "margin: 5px",
-            text: newTopic,
-            class: "topicBtn"
-        })
+    renderButtons();
 
-    $("#btnHolder").append(newBtn);
+    $("#searchBtn").click(handleSearchClick);
+
+    $(".topicBtn").click([this], handleTopicClick);
 
 }
 
 function handleTopicClick(object){
 
     var topic = object.target.innerHTML;
-
     console.log(topic);
+
 
     var memes = $.get("http://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=yqCJ5Nq2E9NOTJwaFPPYcP0VsYxqE25p&limit=10");
     memes.done(function (result) { 
@@ -63,10 +64,15 @@ function handleTopicClick(object){
         $("#memeHolder").append(output);
     });
 
+    $("#searchBtn").click(handleSearchClick);
+
+    $(".topicBtn").click([this], handleTopicClick);
 
 }
 
 function renderButtons() {
+
+    $("#btnHolder").empty();
 
     topics.forEach(element => {
 
@@ -82,7 +88,9 @@ function renderButtons() {
 
     });
 
+    return;
 
 }
 
 
+});
