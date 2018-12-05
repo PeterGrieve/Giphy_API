@@ -22,8 +22,6 @@ function handleSearchClick() {
 
     renderButtons();
 
-    return;
-
 }
 
 function handleTopicClick(){
@@ -32,15 +30,12 @@ function handleTopicClick(){
     console.log(topic);
 
     Search(topic);
-
-
-    return;
 }
 
 function Search(topic) {
 
 
-    var memes = $.get("http://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=yqCJ5Nq2E9NOTJwaFPPYcP0VsYxqE25p&limit=10");
+    var memes = $.get("https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=yqCJ5Nq2E9NOTJwaFPPYcP0VsYxqE25p&limit=10");
     memes.done(function (result) { 
         console.log("success got data", result);
         var data = result.data;
@@ -74,8 +69,6 @@ function renderButtons() {
 
 
     });
-
-    return;
 
 }
 
